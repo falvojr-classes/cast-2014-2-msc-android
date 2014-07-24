@@ -70,7 +70,7 @@ public class MainActivity extends ActionBarActivity {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		int id = item.getItemId();
-		if (id == R.id.action_settings) {
+		if (id == R.id.action_sobre) {
 			new AlertDialog.Builder(this)
 			.setTitle(this.getString(R.string.msg_sobre))
 			.setMessage(getString(R.string.msg_descricao_app)).setIcon(android.R.drawable.ic_dialog_info)

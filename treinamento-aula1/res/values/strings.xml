@@ -7,10 +7,10 @@
     <string name="button_logar">Logar</string>
     <string name="hint_senha">Senha</string>
     <string name="hint_email">Email</string>
-    <string name="title_activity_home">HomeActivity</string>
+    <string name="title_activity_home">Home</string>
     <string name="msg_campo_obrigatorio">Campo obrigatório!</string>
-	<string name="msg_email_invalido">Email inválido!</string>
-	<string name="msg_sobre">Sobre</string>
-	<string name="msg_descricao_app">Nosso primeiro aplicativo :)</string>
-	
+    <string name="msg_email_invalido">Email inválido!</string>
+    <string name="msg_sobre">Sobre</string>
+    <string name="msg_descricao_app">Nosso primeiro aplicativo :)</string>
+
 </resources>
