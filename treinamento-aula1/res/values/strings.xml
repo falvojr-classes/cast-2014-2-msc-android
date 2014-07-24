@@ -3,6 +3,14 @@
 
     <string name="app_name">Treinamento Aula 1</string>
     <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
-
+    <string name="action_sobre">Sobre&#8230;</string>
+    <string name="button_logar">Logar</string>
+    <string name="hint_senha">Senha</string>
+    <string name="hint_email">Email</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="msg_campo_obrigatorio">Campo obrigatório!</string>
+	<string name="msg_email_invalido">Email inválido!</string>
+	<string name="msg_sobre">Sobre</string>
+	<string name="msg_descricao_app">Nosso primeiro aplicativo :)</string>
+	
 </resources>
