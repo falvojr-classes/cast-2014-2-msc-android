@@ -1,14 +1,23 @@
 package br.com.cast.android.aula1;
 
-import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.EActivity;
+import org.androidannotations.annotations.ViewById;
 
-public class HomeActivity extends ActionBarActivity {
+import android.app.Activity;
+import android.widget.TextView;
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_home);
+@EActivity(R.layout.activity_home)
+public class HomeActivity extends Activity {
+
+	public static final String CHAVE_EMAIL = "CHAVE_EMAIL";
+
+	@ViewById
+	TextView lblSaudacao;
+
+	@AfterViews
+	public void onReady() {
+		lblSaudacao.setText("Bem vindo " + getIntent().getStringExtra(CHAVE_EMAIL));
+		getIntent().removeExtra(CHAVE_EMAIL);
 	}
-
 }

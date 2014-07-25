@@ -9,6 +9,7 @@
     tools:context="br.com.cast.android.aula1.HomeActivity" >
 
     <TextView
+        android:id="@+id/lblSaudacao"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/hello_world" />

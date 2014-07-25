@@ -12,5 +12,6 @@
     <string name="msg_email_invalido">Email inválido!</string>
     <string name="msg_sobre">Sobre</string>
     <string name="msg_descricao_app">Nosso primeiro aplicativo :)</string>
+    <string name="msg_erro_autenticacao">Email ou Senha inválidos!</string>
 
 </resources>
