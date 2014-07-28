@@ -5,7 +5,7 @@ import java.io.Serializable;
 import br.com.cast.android.aula1.rest.LoginRestClient;
 
 /**
- * Classe que representa a entidade esperada no reponse do serviço REST {@link LoginRestClient#authenticate(User)}.
+ * Classe que representa a entidade esperada no response do serviço REST {@link LoginRestClient#authenticate(User)}.
  *
  * @author venilton.junior
  */
