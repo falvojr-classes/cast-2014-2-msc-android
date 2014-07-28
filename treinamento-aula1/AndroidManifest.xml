@@ -22,7 +22,7 @@
         </activity>
         <activity
             android:name=".HomeActivity_"
-            android:label="@string/title_activity_home"
+            android:label="@string/titulo_activity_home"
             android:parentActivityName=".MainEActivity_" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

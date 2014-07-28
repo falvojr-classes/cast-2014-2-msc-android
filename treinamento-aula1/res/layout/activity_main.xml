@@ -32,6 +32,6 @@
         android:id="@+id/btnLogar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/button_logar" />
+        android:text="@string/action_logar" />
 
 </LinearLayout>

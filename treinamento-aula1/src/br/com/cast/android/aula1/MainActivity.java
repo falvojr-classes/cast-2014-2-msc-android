@@ -13,6 +13,11 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 
+/**
+ * {@link ActionBarActivity} que representa a tela de login, usando a abordagem nativa.
+ * 
+ * @author venilton.junior
+ */
 public class MainActivity extends ActionBarActivity {
 
 	private EditText txtEmail;
@@ -72,8 +77,8 @@ public class MainActivity extends ActionBarActivity {
 		int id = item.getItemId();
 		if (id == R.id.action_sobre) {
 			new AlertDialog.Builder(this)
-			.setTitle(this.getString(R.string.msg_sobre))
-			.setMessage(getString(R.string.msg_descricao_app)).setIcon(android.R.drawable.ic_dialog_info)
+			.setTitle(this.getString(R.string.titulo_dialog_sobre))
+			.setMessage(getString(R.string.descricao_dialog_sobre)).setIcon(android.R.drawable.ic_dialog_info)
 			.setNeutralButton(android.R.string.ok, null)
 			.show();
 		}

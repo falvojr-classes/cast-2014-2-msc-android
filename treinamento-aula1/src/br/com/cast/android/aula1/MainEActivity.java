@@ -8,6 +8,7 @@ import org.androidannotations.annotations.OptionsMenu;
 import org.androidannotations.annotations.UiThread;
 import org.androidannotations.annotations.ViewById;
 import org.androidannotations.annotations.rest.RestService;
+import org.springframework.web.client.RestClientException;
 
 import android.app.AlertDialog;
 import android.content.Intent;
@@ -16,7 +17,14 @@ import android.text.TextUtils;
 import android.util.Patterns;
 import android.widget.EditText;
 import br.com.cast.android.aula1.rest.LoginRestClient;
+import br.com.cast.android.aula1.rest.entity.User;
 
+/**
+ * {@link ActionBarActivity} que representa a tela de login, usando Android Annotations.
+ * Essa classe é uma evolução da {@link MainEActivity}.
+ * 
+ * @author venilton.junior
+ */
 @EActivity(R.layout.activity_main)
 @OptionsMenu(R.menu.main)
 public class MainEActivity extends ActionBarActivity {
@@ -38,28 +46,11 @@ public class MainEActivity extends ActionBarActivity {
 		}
 	}
 
-	@Background
-	void autenticarUsuarioAsync() {
-		if(loginRestClient.authenticate(txtEmail.getText().toString(), txtSenha.getText().toString())) {
-			Intent intent = HomeActivity_.intent(this).get();
-			intent.putExtra(HomeActivity.CHAVE_EMAIL, txtEmail.getText().toString());
-			startActivity(intent);
-		} else {
-			showErroAutenticacao();
-		}
-	}
-
-	@UiThread
-	void showErroAutenticacao() {
-		txtEmail.setError(this.getString(R.string.msg_erro_autenticacao));
-		txtEmail.requestFocus();
-	}
-
 	@OptionsItem(R.id.action_sobre)
 	void clickMenuSobre() {
 		new AlertDialog.Builder(this)
-		.setTitle(this.getString(R.string.msg_sobre))
-		.setMessage(getString(R.string.msg_descricao_app)).setIcon(android.R.drawable.ic_dialog_info)
+		.setTitle(this.getString(R.string.titulo_dialog_sobre))
+		.setMessage(getString(R.string.descricao_dialog_sobre)).setIcon(android.R.drawable.ic_dialog_info)
 		.setNeutralButton(android.R.string.ok, null)
 		.show();
 	}
@@ -81,5 +72,27 @@ public class MainEActivity extends ActionBarActivity {
 			txtSenha.setError(getString(R.string.msg_campo_obrigatorio));
 			txtSenha.requestFocus();
 		}
+	}
+
+
+	@Background
+	void autenticarUsuarioAsync() {
+		try {
+			// Consome o REST service de autenticação:
+			User credenciais = new User(txtEmail.getText().toString(), txtSenha.getText().toString());
+			User user = loginRestClient.authenticate(credenciais);
+			// Cria e configura o intent para redirecionar para a activity de home:
+			Intent intent = HomeActivity_.intent(this).get();
+			intent.putExtra(HomeActivity.CHAVE_NOME_USUARIO, user.getFirstName());
+			startActivity(intent);
+		} catch (RestClientException erroAutenticacao) {
+			showErroAutenticacao();
+		}
+	}
+
+	@UiThread
+	void showErroAutenticacao() {
+		txtEmail.setError(this.getString(R.string.msg_erro_autenticacao));
+		txtEmail.requestFocus();
 	}
 }
