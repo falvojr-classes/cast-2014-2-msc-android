@@ -47,6 +47,25 @@ public class MainActivity extends ActionBarActivity {
 		});
 	}
 
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		getMenuInflater().inflate(R.menu.main, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		int id = item.getItemId();
+		if (id == R.id.action_sobre) {
+			new AlertDialog.Builder(this)
+			.setTitle(this.getString(R.string.titulo_dialog_sobre))
+			.setMessage(getString(R.string.descricao_dialog_sobre)).setIcon(android.R.drawable.ic_dialog_info)
+			.setNeutralButton(android.R.string.ok, null)
+			.show();
+		}
+		return super.onOptionsItemSelected(item);
+	}
+
 	private void validarCampoEmail() {
 		txtEmail.setError(null);
 		if (TextUtils.isEmpty(txtEmail.getText())) {
@@ -66,22 +85,4 @@ public class MainActivity extends ActionBarActivity {
 		}
 	}
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		getMenuInflater().inflate(R.menu.main, menu);
-		return true;
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		int id = item.getItemId();
-		if (id == R.id.action_sobre) {
-			new AlertDialog.Builder(this)
-			.setTitle(this.getString(R.string.titulo_dialog_sobre))
-			.setMessage(getString(R.string.descricao_dialog_sobre)).setIcon(android.R.drawable.ic_dialog_info)
-			.setNeutralButton(android.R.string.ok, null)
-			.show();
-		}
-		return super.onOptionsItemSelected(item);
-	}
 }

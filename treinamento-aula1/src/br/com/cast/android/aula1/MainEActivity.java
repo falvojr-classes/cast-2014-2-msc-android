@@ -74,7 +74,6 @@ public class MainEActivity extends ActionBarActivity {
 		}
 	}
 
-
 	@Background
 	void autenticarUsuarioAsync() {
 		try {
