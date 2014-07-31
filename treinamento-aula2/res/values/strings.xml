@@ -2,12 +2,31 @@
 <resources>
 
     <string name="app_name">Treinamento Aula 2</string>
+    
+    <string name="sim">Sim</string>
+    <string name="nao">Não</string> 
+    
     <string name="title_activity_user_list">Usuários Cadastrados</string>
     <string name="action_incluir">Incluir</string>
     <string name="action_refresh">Refresh</string>
     <string name="action_editar">Editar</string>
     <string name="action_excluir">Excluir</string>
+    
     <string name="title_activity_user">Manter Usuário</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="hint_nome">Nome</string>
+    <string name="hint_sobrenome">Sobrenome</string>
+    <string name="hint_masculino">Masculino</string>
+    <string name="hint_feminino">Feminino</string>
+    <string name="hint_email">E-Mail</string>
+    <string name="hint_senha">Senha</string>
+    <string name="hint_senha_repetida">Repita a Senha</string>
+    <string name="action_salvar">Salvar</string>
+    <string name="msg_campo_obrigatorio">Campo obrigatório!</string>
+    <string name="msg_sucesso_inclusao">Usuário incluído com sucesso!</string>  
+    <string name="msg_sucesso_edicao">Usuário editado com sucesso!</string> 
+    <string name="msg_sucesso_exclusao">Usuário excluído com sucesso!</string>   
+    <string name="msg_erro_rest">Ocorreu um erro inesperado.</string>
+    <string name="titulo_dialog_confirmacao">Confirmação</string> 
+    <string name="msg_dialog_confirmacao_exclusao">Deseja realmente excluir o usuário %s?</string> 
 
 </resources>

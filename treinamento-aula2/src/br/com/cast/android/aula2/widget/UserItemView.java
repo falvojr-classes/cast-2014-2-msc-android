@@ -1,4 +1,4 @@
-package br.com.cast.android.aula2.wicket;
+package br.com.cast.android.aula2.widget;
 
 import org.androidannotations.annotations.EViewGroup;
 import org.androidannotations.annotations.ViewById;
@@ -20,7 +20,7 @@ public class UserItemView extends LinearLayout {
 		super(context);
 	}
 
-	public void bind(User person) {
+	public void configurarItem(User person) {
 		txtNomeCompleto.setText(person.getFirstName() + " " + person.getLastName());
 		int icone = Gender.F.equals(person.getGender()) ? R.drawable.ic_user_female : R.drawable.ic_user_male;
 		txtNomeCompleto.setCompoundDrawablesWithIntrinsicBounds(icone, 0, 0, 0);

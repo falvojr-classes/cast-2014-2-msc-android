@@ -87,5 +87,4 @@ public class User implements Serializable {
 	public long getDateLastLogin() {
 		return dateLastLogin;
 	}
-
 }

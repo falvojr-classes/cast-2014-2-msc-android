@@ -1,4 +1,4 @@
-package br.com.cast.android.aula2.wicket;
+package br.com.cast.android.aula2.widget;
 
 import java.util.List;
 
@@ -46,7 +46,7 @@ public class UserListAdapter extends BaseAdapter {
 		} else {
 			personItemView = (UserItemView) convertView;
 		}
-		personItemView.bind(getItem(position));
+		personItemView.configurarItem(getItem(position));
 		return personItemView;
 	}
 }

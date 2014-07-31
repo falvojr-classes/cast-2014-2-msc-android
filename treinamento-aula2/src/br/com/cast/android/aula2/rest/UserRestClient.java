@@ -18,7 +18,7 @@ import br.com.cast.android.aula2.rest.entity.User;
  * @author venilton.junior
  */
 @Rest(rootUrl = "http://10.11.21.235:8080/rest-app/rest/", converters = { MappingJacksonHttpMessageConverter.class })
-public interface UserRestClient extends RestClientSupport{
+public interface UserRestClient extends RestClientSupport {
 
 	@Post("/user/auth")
 	User authenticate(User credenciais);
