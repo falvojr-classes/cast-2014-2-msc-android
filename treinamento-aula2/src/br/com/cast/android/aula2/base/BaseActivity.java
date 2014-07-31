@@ -4,7 +4,6 @@ import java.lang.reflect.Field;
 
 import org.androidannotations.annotations.AfterInject;
 import org.androidannotations.annotations.EActivity;
-import org.androidannotations.annotations.UiThread;
 import org.androidannotations.api.rest.RestClientSupport;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 
@@ -19,7 +18,6 @@ public abstract class BaseActivity extends ActionBarActivity {
 
 	private ProgressDialog progressDialog;
 
-	@UiThread
 	protected void iniciarLoading() {
 		if (progressDialog == null) {
 			progressDialog = new ProgressDialog(this);
@@ -30,7 +28,6 @@ public abstract class BaseActivity extends ActionBarActivity {
 		progressDialog.show();
 	}
 
-	@UiThread
 	protected void terminarLoading() {
 		if (progressDialog != null) {
 			progressDialog.dismiss();
