@@ -3,14 +3,20 @@
 
     <string name="app_name">Treinamento Aula 2</string>
     
+    <string name="progress_aguarde">Aguarde&#8230;</string> 
+    
     <string name="sim">Sim</string>
     <string name="nao">Não</string> 
+    
+    <string name="msg_erro_rest">Ocorreu um erro inesperado.</string>
     
     <string name="title_activity_user_list">Usuários Cadastrados</string>
     <string name="action_incluir">Incluir</string>
     <string name="action_refresh">Refresh</string>
     <string name="action_editar">Editar</string>
     <string name="action_excluir">Excluir</string>
+    <string name="titulo_dialog_confirmacao">Confirmação</string>
+    <string name="msg_dialog_confirmacao_exclusao">Deseja realmente excluir o usuário %s?</string> 
     
     <string name="title_activity_user">Manter Usuário</string>
     <string name="hint_nome">Nome</string>
@@ -25,8 +31,6 @@
     <string name="msg_sucesso_inclusao">Usuário incluído com sucesso!</string>  
     <string name="msg_sucesso_edicao">Usuário editado com sucesso!</string> 
     <string name="msg_sucesso_exclusao">Usuário excluído com sucesso!</string>   
-    <string name="msg_erro_rest">Ocorreu um erro inesperado.</string>
-    <string name="titulo_dialog_confirmacao">Confirmação</string> 
-    <string name="msg_dialog_confirmacao_exclusao">Deseja realmente excluir o usuário %s?</string> 
-
+    
+     
 </resources>

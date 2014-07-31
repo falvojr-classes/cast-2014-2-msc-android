@@ -1,14 +1,13 @@
 package br.com.cast.android.aula2.base;
 
 import java.lang.reflect.Field;
-
 import org.androidannotations.annotations.AfterInject;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.api.rest.RestClientSupport;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
-
 import android.app.ProgressDialog;
 import android.support.v7.app.ActionBarActivity;
+import br.com.cast.android.aula2.R;
 
 @EActivity
 public abstract class BaseActivity extends ActionBarActivity {
@@ -23,7 +22,7 @@ public abstract class BaseActivity extends ActionBarActivity {
 			progressDialog = new ProgressDialog(this);
 			progressDialog.setIndeterminate(true);
 			progressDialog.setCanceledOnTouchOutside(false);
-			progressDialog.setMessage("Aguarde...");
+			progressDialog.setMessage(getString(R.string.progress_aguarde));
 		}
 		progressDialog.show();
 	}
