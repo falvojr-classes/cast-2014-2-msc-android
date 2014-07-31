@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Treinamento Aula 2</string>
+    <string name="title_activity_user_list">Usuários Cadastrados</string>
+    <string name="action_incluir">Incluir</string>
+    <string name="action_refresh">Refresh</string>
+    <string name="action_editar">Editar</string>
+    <string name="action_excluir">Excluir</string>
+    <string name="title_activity_user">Manter Usuário</string>
+    <string name="hello_world">Hello world!</string>
+
+</resources>
