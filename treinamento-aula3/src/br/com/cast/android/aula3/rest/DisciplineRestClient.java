@@ -20,15 +20,15 @@ import br.com.cast.android.aula3.rest.entity.Discipline;
 @Rest(rootUrl = "http://10.11.21.235:8080/rest-app/rest/", converters = { MappingJacksonHttpMessageConverter.class })
 public interface DisciplineRestClient extends RestClientSupport {
 
-	@Post("/Discipline")
+	@Post("/discipline")
 	Discipline insert(Discipline discipline);
 
-	@Get("/Discipline/owner/{idOwner}")
+	@Get("/discipline/owner/{idOwner}")
 	List<Discipline> findByOwner(Long idOwner);
 
-	@Put("/Discipline")
+	@Put("/discipline")
 	Discipline update(Discipline discipline);
 
-	@Delete("/Discipline/{id}")
+	@Delete("/discipline/{id}")
 	void delete(Long id);
 }
