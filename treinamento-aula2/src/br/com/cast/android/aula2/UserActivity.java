@@ -28,7 +28,7 @@ public class UserActivity extends BaseActivity {
 	public static String CHAVE_USUARIO = "CHAVE_USUARIO";
 
 	@ViewById
-	EditText txtNome, txtSobrenome, txtEmail, txtSenha, txtSenhaRepetida;
+	EditText txtNome, txtSobrenome, txtEmail, txtSenha;
 	@ViewById
 	RadioGroup rdoGrpGenero;
 
@@ -51,8 +51,7 @@ public class UserActivity extends BaseActivity {
 
 	@Click(R.id.btnSalvar)
 	void onSalvar() {
-		boolean isValido = validarCampoObrigatorio(txtNome, txtSobrenome, txtEmail, txtSenha, txtSenhaRepetida);
-		//TODO: Validar os campos "E-Mail" e "Senha"
+		boolean isValido = validarCampoObrigatorio(txtNome, txtSobrenome, txtEmail, txtSenha);
 		if (isValido) {
 			super.iniciarLoading();
 			User user = usuarioEdicao == null ? new User() : usuarioEdicao;

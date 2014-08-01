@@ -9,19 +9,29 @@ import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import br.com.cast.android.aula2.UserListActivity;
 import br.com.cast.android.aula2.rest.entity.User;
 
+/**
+ * Adapter responsável pela manipulação de uma lista de {@link User}s.
+ * A annotation {@link EBean} indica apenas que essa classe será instanciada automaticamente pelo Android Annotations.
+ * 
+ * @author venilton.junior
+ */
 @EBean
 public class UserListAdapter extends BaseAdapter {
 
-	List<User> usuarios;
+	/**
+	 * Recupera o contexto atual de execução. Neste caso podemos até mesmo restringir esse campo para o tipo {@link UserListActivity}.
+	 */
+	@RootContext
+	Context context;
+
+	private List<User> usuarios;
 
 	public void setUsuarios(List<User> usuarios) {
 		this.usuarios = usuarios;
 	}
-
-	@RootContext
-	Context context;
 
 	@Override
 	public int getCount() {
@@ -38,15 +48,18 @@ public class UserListAdapter extends BaseAdapter {
 		return position;
 	}
 
+	/**
+	 * Principal método sobreescrito da classe {@link BaseAdapter}, nele configuramos nosso {@link UserItemView}.
+	 */
 	@Override
-	public View getView(int position, View convertView, ViewGroup parent) {
-		UserItemView personItemView;
-		if (convertView == null) {
-			personItemView = UserItemView_.build(context);
+	public UserItemView getView(int position, View itemViewAtual, ViewGroup parent) {
+		UserItemView userItemView;
+		if (itemViewAtual == null) {
+			userItemView = UserItemView_.build(context);
 		} else {
-			personItemView = (UserItemView) convertView;
+			userItemView = (UserItemView) itemViewAtual;
 		}
-		personItemView.configurarItem(getItem(position));
-		return personItemView;
+		userItemView.configurarItem(getItem(position));
+		return userItemView;
 	}
 }

@@ -31,7 +31,7 @@ import br.com.cast.android.aula2.rest.entity.User;
 import br.com.cast.android.aula2.widget.UserListAdapter;
 
 /**
- * {@link BaseActivity} com a lógica de listagem de usuários, além das chamadas os fluxos de "Incluir", "Alterar" e "Excluir".
+ * {@link BaseActivity} com a lógica de listagem de usuários, além das chamadas aos fluxos de "Incluir", "Alterar" e "Excluir".<br>
  * 
  * @author venilton.junior
  */
@@ -48,16 +48,22 @@ public class UserListActivity extends BaseActivity {
 	@RestService
 	UserRestClient userRestClient;
 
+	/**
+	 * A annotation {@link AfterViews} indica que esse método será chamado quando todos os elementos de visão estiverem prontos.<br>
+	 * Nesse momento os campos com {@link ViewById}, {@link Bean} e {@link RestService} também já estarão injetados!
+	 */
 	@AfterViews
-	void init() {
+	void tudoPronto() {
+		// Ativa o menu de contexto da nossa ListView:
+		super.registerForContextMenu(listViewUsuarios);
+		// Inicia o "Loading" e  carrega a ListView:
 		super.iniciarLoading();
 		carregarListView();
-		super.registerForContextMenu(listViewUsuarios);
 	}
 
 	@Background
 	void carregarListView() {
-		List<User> usuarios = userRestClient.findAll();
+		List<User> usuarios = userRestClient.findByOwner(User.ID_OWNER);
 		atualizarListView(usuarios);
 	}
 

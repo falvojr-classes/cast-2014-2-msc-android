@@ -13,6 +13,12 @@ public class User implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * Campo que identifica o criador do {@link User}.
+	 * TODO: Cada participante deve colocar o seu respectivo identificador.
+	 */
+	public static final long ID_OWNER = 1;
+
 	private long id;
 	private String firstName;
 	private String lastName;
@@ -21,6 +27,8 @@ public class User implements Serializable {
 	private String password;
 	private long dateRegistration;
 	private long dateLastLogin;
+
+	private long idOwner = ID_OWNER;
 
 	public User() {
 		super();
@@ -87,4 +95,9 @@ public class User implements Serializable {
 	public long getDateLastLogin() {
 		return dateLastLogin;
 	}
+
+	public long getIdOwner() {
+		return idOwner;
+	}
+
 }

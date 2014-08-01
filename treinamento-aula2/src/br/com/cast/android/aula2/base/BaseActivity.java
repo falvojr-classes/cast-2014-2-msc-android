@@ -1,14 +1,23 @@
 package br.com.cast.android.aula2.base;
 
 import java.lang.reflect.Field;
+
 import org.androidannotations.annotations.AfterInject;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.api.rest.RestClientSupport;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
+
 import android.app.ProgressDialog;
 import android.support.v7.app.ActionBarActivity;
 import br.com.cast.android.aula2.R;
 
+/**
+ * Classe base com caraterísticas úteis às nossas Activities.<br>
+ * Quando a herdamos temos acesso a uma {@link ProgressDialog} e as constantes REQUESTCODE_INCLUIR e REQUESTCODE_EDITAR,
+ * utilizadas para startar identificar o resultado de uma Activity iniciada com o método startActivityForResult.
+ * 
+ * @author venilton.junior
+ */
 @EActivity
 public abstract class BaseActivity extends ActionBarActivity {
 
@@ -24,11 +33,13 @@ public abstract class BaseActivity extends ActionBarActivity {
 			progressDialog.setCanceledOnTouchOutside(false);
 			progressDialog.setMessage(getString(R.string.progress_aguarde));
 		}
-		progressDialog.show();
+		if (!progressDialog.isShowing()) {
+			progressDialog.show();
+		}
 	}
 
 	protected void terminarLoading() {
-		if (progressDialog != null) {
+		if (progressDialog != null && progressDialog.isShowing()) {
 			progressDialog.dismiss();
 		}
 	}

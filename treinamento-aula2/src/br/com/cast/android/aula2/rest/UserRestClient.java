@@ -24,16 +24,16 @@ public interface UserRestClient extends RestClientSupport {
 	User authenticate(User credenciais);
 
 	@Post("/user")
-	User insert(User student);
+	User insert(User user);
 
-	@Get("/user")
-	List<User> findAll();
+	@Get("/user/owner/{idOwner}")
+	List<User> findByOwner(Long idOwner);
 
 	@Get("/user/{id}")
 	User findById(Long id);
 
 	@Put("/user")
-	User update(User student);
+	User update(User user);
 
 	@Delete("/user/{id}")
 	void delete(Long id);
