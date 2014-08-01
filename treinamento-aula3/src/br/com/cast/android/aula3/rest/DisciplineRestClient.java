@@ -1,4 +1,4 @@
-package br.com.cast.android.aula2.rest;
+package br.com.cast.android.aula3.rest;
 
 import java.util.List;
 
@@ -10,25 +10,25 @@ import org.androidannotations.annotations.rest.Rest;
 import org.androidannotations.api.rest.RestClientSupport;
 import org.springframework.http.converter.json.MappingJacksonHttpMessageConverter;
 
-import br.com.cast.android.aula2.rest.entity.User;
+import br.com.cast.android.aula3.rest.entity.Discipline;
 
 /**
- * Interface que prove os serviços REST da entidade {@link User}.
+ * Interface que prove os serviços REST da entidade {@link Discipline}.
  * 
  * @author venilton.junior
  */
 @Rest(rootUrl = "http://10.11.21.235:8080/rest-app/rest/", converters = { MappingJacksonHttpMessageConverter.class })
-public interface UserRestClient extends RestClientSupport {
+public interface DisciplineRestClient extends RestClientSupport {
 
-	@Post("/user")
-	User insert(User user);
+	@Post("/Discipline")
+	Discipline insert(Discipline discipline);
 
-	@Get("/user/owner/{idOwner}")
-	List<User> findByOwner(Long idOwner);
+	@Get("/Discipline/owner/{idOwner}")
+	List<Discipline> findByOwner(Long idOwner);
 
-	@Put("/user")
-	User update(User user);
+	@Put("/Discipline")
+	Discipline update(Discipline discipline);
 
-	@Delete("/user/{id}")
+	@Delete("/Discipline/{id}")
 	void delete(Long id);
 }
