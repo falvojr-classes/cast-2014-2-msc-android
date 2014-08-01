@@ -18,6 +18,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.MenuItem;
@@ -61,30 +62,58 @@ public class UserListActivity extends BaseActivity {
 		carregarListView();
 	}
 
+	/**
+	 * A annotation {@link Background} faz com que esse método seja executado de forma assícrona,
+	 * como se fosse uma {@link AsyncTask}. Ela é obrigatória para o consumo de serviços REST.
+	 */
 	@Background
 	void carregarListView() {
 		List<User> usuarios = userRestClient.findByOwner(User.ID_OWNER);
-		atualizarListView(usuarios);
+		carregarListView(usuarios);
 	}
 
+	/**
+	 * A annotation {@link UiThread} identifica que esse método fará alterações em elementos visuais,
+	 * o que não pode ser feito dentro de um método com {@link Background}.
+	 */
 	@UiThread
-	void atualizarListView(List<User> usuarios) {
+	void carregarListView(List<User> usuarios) {
 		userListAdapter.setUsuarios(usuarios);
 		listViewUsuarios.setAdapter(userListAdapter);
 		userListAdapter.notifyDataSetChanged();
 		super.terminarLoading();
 	}
 
+	/* INCLUIR */
+
+	/**
+	 * A annotation {@link OptionsItem} relaciona o click de um item do menu vinculado a activity com a annotation {@link OptionsMenu}.
+	 */
 	@OptionsItem(R.id.action_incluir)
 	void onIncluir() {
+		// Redireciona para a UserActivity esperando um resultado identificado pela chave REQUESTCODE_INCLUIR:
 		UserActivity_.intent(this).startForResult(REQUESTCODE_INCLUIR);
 	}
+
+	/**
+	 * A annotation {@link OnActivityResult} faz com que esse método seja chamado quando a Activity iniciada com startForResult for finalizada (.finish()).
+	 */
+	@OnActivityResult(REQUESTCODE_INCLUIR)
+	void onResultIncluir(int resultCode) {
+		super.iniciarLoading();
+		carregarListView();
+		mostrarToastPorResultCode(resultCode, R.string.msg_sucesso_inclusao);
+	}
+
+	/* REFRESH */
 
 	@OptionsItem(R.id.action_refresh)
 	void onRefresh() {
 		super.iniciarLoading();
 		carregarListView();
 	}
+
+	/* EDITAR e EXCLUIR (CONTEXT MENU) */
 
 	@Override
 	public void onCreateContextMenu(ContextMenu menu, View view, ContextMenuInfo menuInfo) {
@@ -97,14 +126,18 @@ public class UserListActivity extends BaseActivity {
 		// Recupera o item selecionado:
 		AdapterContextMenuInfo info = (AdapterContextMenuInfo) item.getMenuInfo();
 		final User usuarioSelecionado = userListAdapter.getItem(info.position);
-		// Identifica a ação escolhida:
+
+		// Identifica a ação selecionada:
 		switch(item.getItemId()){
 		case R.id.action_editar:
+			// Prepara uma intenção para a UserActivity com o usuário selecionado:
 			Intent intent = UserActivity_.intent(this).get();
 			intent.putExtra(UserActivity.CHAVE_USUARIO, usuarioSelecionado);
+			// Redireciona para a UserActivity esperando um resultado identificado pela chave REQUESTCODE_EDITAR:
 			startActivityForResult(intent, REQUESTCODE_EDITAR);
 			break;
 		case R.id.action_excluir:
+			// Cria um listener para a resposta positiva (Sim) na confirmação de exclusão:
 			OnClickListener listenerSim = new OnClickListener() {
 				@Override
 				public void onClick(DialogInterface arg0, int arg1) {
@@ -112,6 +145,7 @@ public class UserListActivity extends BaseActivity {
 					deletarUsuario(usuarioSelecionado);
 				}
 			};
+			// Exibe um alerta de confirmação usando o listener criado para o botão "Sim".
 			new AlertDialog.Builder(this)
 			.setIcon(android.R.drawable.ic_dialog_alert)
 			.setPositiveButton(R.string.sim, listenerSim)
@@ -125,30 +159,29 @@ public class UserListActivity extends BaseActivity {
 		return super.onContextItemSelected(item);
 	}
 
+	@OnActivityResult(REQUESTCODE_EDITAR)
+	void onResultEditar(int resultCode) {
+		super.iniciarLoading();
+		carregarListView();
+
+		mostrarToastPorResultCode(resultCode, R.string.msg_sucesso_edicao);
+	}
+
 	@Background
 	void deletarUsuario(User usuario) {
 		try {
 			userRestClient.delete(usuario.getId());
-			mostrarToast(R.string.msg_sucesso_exclusao);
+
+			super.iniciarLoading();
 			carregarListView();
+
+			mostrarToast(R.string.msg_sucesso_exclusao);
 		} catch (RestClientException excecaoRest) {
 			mostrarToast(R.string.msg_erro_rest);
 		}
 	}
 
-	@OnActivityResult(REQUESTCODE_INCLUIR)
-	void onResultIncluir(int resultCode) {
-		super.iniciarLoading();
-		carregarListView();
-		mostrarToastPorResultCode(resultCode, R.string.msg_sucesso_inclusao);
-	}
-
-	@OnActivityResult(REQUESTCODE_EDITAR)
-	void onResultEditar(int resultCode) {
-		super.iniciarLoading();
-		carregarListView();
-		mostrarToastPorResultCode(resultCode, R.string.msg_sucesso_edicao);
-	}
+	/* ÚTEIS (MENSAGENS) */
 
 	@UiThread
 	void mostrarToast(int idRecurso, Object... parametros) {

@@ -4,7 +4,6 @@ import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Background;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
-import org.androidannotations.annotations.UiThread;
 import org.androidannotations.annotations.ViewById;
 import org.androidannotations.annotations.rest.RestService;
 import org.springframework.web.client.RestClientException;
@@ -25,10 +24,14 @@ import br.com.cast.android.aula2.rest.entity.User;
 @EActivity(R.layout.activity_user)
 public class UserActivity extends BaseActivity {
 
+	/**
+	 * Constante pública utilizada no fluxo de "Edição".
+	 */
 	public static String CHAVE_USUARIO = "CHAVE_USUARIO";
 
 	@ViewById
 	EditText txtNome, txtSobrenome, txtEmail, txtSenha;
+
 	@ViewById
 	RadioGroup rdoGrpGenero;
 
@@ -38,7 +41,8 @@ public class UserActivity extends BaseActivity {
 	private User usuarioEdicao;
 
 	@AfterViews
-	public void init() {
+	public void tudoPronto() {
+		// Lógica para carregar os campos no fluxo de "Edição":
 		usuarioEdicao = (User) getIntent().getSerializableExtra(CHAVE_USUARIO);
 		if (usuarioEdicao != null) {
 			txtNome.setText(usuarioEdicao.getFirstName());
@@ -49,6 +53,11 @@ public class UserActivity extends BaseActivity {
 		getIntent().removeExtra(CHAVE_USUARIO);
 	}
 
+	/* SALVAR */
+
+	/**
+	 * A annotation {@link Click} faz com que um método seja chamado no click do elemento com o R.id especificado.
+	 */
 	@Click(R.id.btnSalvar)
 	void onSalvar() {
 		boolean isValido = validarCampoObrigatorio(txtNome, txtSobrenome, txtEmail, txtSenha);
@@ -65,25 +74,22 @@ public class UserActivity extends BaseActivity {
 	}
 
 	@Background
-	void salvarUsuario(User usuarioPersistencia) {
+	void salvarUsuario(User usuario) {
 		try {
 			if (usuarioEdicao == null) {
-				userRestClient.insert(usuarioPersistencia);
+				userRestClient.insert(usuario);
 			} else {
-				userRestClient.update(usuarioPersistencia);
+				userRestClient.update(usuario);
 			}
 			setResult(RESULT_OK);
 		} catch (RestClientException excecaoRest) {
 			setResult(RESULT_CANCELED);
 		}
-		finalizarActivity();
-	}
-
-	@UiThread
-	void finalizarActivity() {
 		super.terminarLoading();
 		finish();
 	}
+
+	/* ÚTIL (VALIDAÇÃO) */
 
 	private boolean validarCampoObrigatorio(EditText... campos) {
 		boolean isValido = true;
