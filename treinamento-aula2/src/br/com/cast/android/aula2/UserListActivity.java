@@ -40,6 +40,8 @@ import br.com.cast.android.aula2.widget.UserListAdapter;
 @OptionsMenu(R.menu.user_list)
 public class UserListActivity extends BaseActivity {
 
+	/* LIST VIEW */
+
 	@ViewById
 	ListView listViewUsuarios;
 
