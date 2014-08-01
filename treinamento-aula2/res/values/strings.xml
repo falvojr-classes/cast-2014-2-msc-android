@@ -8,6 +8,7 @@
     <string name="progress_aguarde">Aguarde&#8230;</string> 
     <string name="sim">Sim</string>
     <string name="nao">Não</string> 
+    <string name="msg_campo_obrigatorio">Campo obrigatório!</string>
     <string name="msg_erro_rest">Ocorreu um erro inesperado.</string>
     
      <!-- Strings UserListActivity  -->
@@ -31,7 +32,5 @@
     <string name="hint_email">E-Mail</string>
     <string name="hint_senha">Senha</string>
     <string name="action_salvar">Salvar</string>
-    <string name="msg_campo_obrigatorio">Campo obrigatório!</string>
-    
      
 </resources>
