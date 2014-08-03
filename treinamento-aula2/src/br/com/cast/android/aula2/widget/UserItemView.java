@@ -11,7 +11,7 @@ import br.com.cast.android.aula2.rest.entity.Gender;
 import br.com.cast.android.aula2.rest.entity.User;
 
 /**
- * Componente que representa o template de cada um dos usuários manipulador no {@link UserListAdapter}.
+ * Componente que representa o template de cada um dos usuários manipulados no {@link UserListAdapter}.
  * A annotation {@link EViewGroup} identifica que esta classe representa um elemnto de visão que pode agrupar outros, como é o caso do {@link LinearLayout}.
  * 
  * @author venilton.junior

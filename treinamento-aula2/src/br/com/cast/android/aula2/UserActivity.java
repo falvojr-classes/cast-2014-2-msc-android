@@ -29,6 +29,8 @@ public class UserActivity extends BaseActivity {
 	 */
 	public static String CHAVE_USUARIO = "CHAVE_USUARIO";
 
+	private static final int RESULT_ERROR_REST = 99;
+
 	@ViewById
 	EditText txtNome, txtSobrenome, txtEmail, txtSenha;
 
@@ -83,7 +85,7 @@ public class UserActivity extends BaseActivity {
 			}
 			setResult(RESULT_OK);
 		} catch (RestClientException excecaoRest) {
-			setResult(RESULT_CANCELED);
+			setResult(RESULT_ERROR_REST);
 		}
 		super.terminarLoading();
 		finish();
