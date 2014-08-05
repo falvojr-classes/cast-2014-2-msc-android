@@ -19,16 +19,16 @@ public class User implements Serializable {
 	 */
 	public static final long ID_OWNER = 1;
 
-	private long id;
+	private Long id;
 	private String firstName;
 	private String lastName;
 	private Gender gender;
 	private String email;
 	private String password;
-	private long dateRegistration;
-	private long dateLastLogin;
+	private Long dateRegistration;
+	private Long dateLastLogin;
 
-	private long idOwner = ID_OWNER;
+	private Long idOwner = ID_OWNER;
 
 	public User() {
 		super();
@@ -40,11 +40,11 @@ public class User implements Serializable {
 		this.password = password;
 	}
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -88,15 +88,15 @@ public class User implements Serializable {
 		this.password = password;
 	}
 
-	public long getDateRegistration() {
+	public Long getDateRegistration() {
 		return dateRegistration;
 	}
 
-	public long getDateLastLogin() {
+	public Long getDateLastLogin() {
 		return dateLastLogin;
 	}
 
-	public long getIdOwner() {
+	public Long getIdOwner() {
 		return idOwner;
 	}
 

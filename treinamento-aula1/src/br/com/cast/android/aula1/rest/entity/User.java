@@ -13,14 +13,15 @@ public class User implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	private long id;
+	private Long id;
 	private String firstName;
 	private String lastName;
 	private Gender gender;
 	private String email;
 	private String password;
-	private long dateRegistration;
-	private long dateLastLogin;
+	private Long dateRegistration;
+	private Long dateLastLogin;
+	private Long idOwner;
 
 	public User() {
 		super();
@@ -32,11 +33,11 @@ public class User implements Serializable {
 		this.password = password;
 	}
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -80,20 +81,15 @@ public class User implements Serializable {
 		this.password = password;
 	}
 
-	public long getDateRegistration() {
+	public Long getDateRegistration() {
 		return dateRegistration;
 	}
 
-	public void setDateRegistration(long dateRegistration) {
-		this.dateRegistration = dateRegistration;
-	}
-
-	public long getDateLastLogin() {
+	public Long getDateLastLogin() {
 		return dateLastLogin;
 	}
 
-	public void setDateLastLogin(long dateLastLogin) {
-		this.dateLastLogin = dateLastLogin;
+	public Long getIdOwner() {
+		return idOwner;
 	}
-
 }

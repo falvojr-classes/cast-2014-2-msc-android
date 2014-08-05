@@ -193,7 +193,7 @@ public class UserListActivity extends BaseActivity {
 	private void mostrarToastPorResultCode(int resultCode, int idMensagemOk, Object... parametros) {
 		if (RESULT_OK == resultCode) {
 			mostrarToast(idMensagemOk, parametros);
-		} else {
+		} else if (RESULT_CANCELED != resultCode) {
 			mostrarToast(R.string.msg_erro_rest);
 		}
 	}
