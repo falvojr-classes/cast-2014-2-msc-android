@@ -3,11 +3,11 @@
 ###25/07/2014: Sessão 1
 
 Introdução ao desenvolvimento móvel na plataforma android, juntamente com alguns frameworks úteis para um desenvolvimento mais ágil e manutenível. Nesta sessão o seguinte projeto foi desenvolvido através do método "hands-on":
-+ <b>treinamento-aula1</b>: Projeto com a implementação de uma tela de login integrada a um serviço de autenticação REST.
++ <b>treinamento-aula1</b>: Projeto completo com a implementação de uma tela de login integrada a um serviço de autenticação REST.
 
 ###31/07/2014: Sessão 2
 Aplicação de um CRUD para fixação dos conceitos introduzidos na primeira sessão. Além da apresentação de novos componentes e técnicas. Nesta sessão o seguinte projeto foi desenvolvido através do método "hands-on":
-+ <b>treinamento-aula2</b>: Projeto com a implementação de um CRUD utilizando a entidade `User.java`
++ <b>treinamento-aula2</b>: Projeto completo com a implementação e documentação de um CRUD utilizando a entidade `User.java`
 
 ###01/08/2014: Sessão 3
 Aplicação de um CRUD para fixação dos conceitos introduzidos na primeira sessão. Nesta sessão o seguinte projeto foi desenvolvido de forma individual:
